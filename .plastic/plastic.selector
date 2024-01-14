@@ -1,0 +1,4 @@
+repository "Planet Protector@AdarAvsian@cloud"
+  path "/"
+    br "/main"
+    co "/main"
