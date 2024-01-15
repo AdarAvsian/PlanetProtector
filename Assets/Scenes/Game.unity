@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 48245988}
   - component: {fileID: 48245990}
   - component: {fileID: 48245989}
+  - component: {fileID: 48245991}
   m_Layer: 0
   m_Name: Horizontal Edge
   m_TagString: Untagged
@@ -253,6 +254,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &48245991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48245987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a1fd95b492e8f4d87770628f93170a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetrb: {fileID: 1373531247}
+  bounceDampaning: 2
 --- !u!1 &131000193
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +420,7 @@ MonoBehaviour:
   moveSpeed: 700
   slowSpeed: 300
   force: 2
+  grappleSpeed: 0.05
 --- !u!60 &579517090
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -548,9 +564,9 @@ Transform:
   m_GameObject: {fileID: 579517088}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.3144747, w: 0.94926584}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
-  m_LocalScale: {x: 0.29850873, y: 0.3048455, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -1, y: 0, z: 0.3652}
+  m_LocalScale: {x: 0.08047795, y: 0.08218635, z: 0.2696}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -36.658}
@@ -588,7 +604,7 @@ DistanceJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579517088}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 1373531247}
@@ -716,6 +732,7 @@ GameObject:
   - component: {fileID: 887760874}
   - component: {fileID: 887760876}
   - component: {fileID: 887760875}
+  - component: {fileID: 887760877}
   m_Layer: 0
   m_Name: Vertical Edge
   m_TagString: Untagged
@@ -835,6 +852,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &887760877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887760873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a1fd95b492e8f4d87770628f93170a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetrb: {fileID: 1373531247}
+  bounceDampaning: 2
 --- !u!1 &1028212821
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,6 +961,7 @@ GameObject:
   - component: {fileID: 1053682780}
   - component: {fileID: 1053682782}
   - component: {fileID: 1053682781}
+  - component: {fileID: 1053682783}
   m_Layer: 0
   m_Name: Horizontal Edge
   m_TagString: Untagged
@@ -1049,6 +1081,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1053682783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053682779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a1fd95b492e8f4d87770628f93170a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetrb: {fileID: 1373531247}
+  bounceDampaning: 2
 --- !u!1 &1373531243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,7 +1109,7 @@ GameObject:
   - component: {fileID: 1373531247}
   m_Layer: 6
   m_Name: Planet
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1165,7 +1211,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.41, y: 0, z: 0}
-  m_LocalScale: {x: 0.3495094, y: 0.3495094, z: 0.6990188}
+  m_LocalScale: {x: 0.10048395, y: 0.10048395, z: 0.2009679}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -1241,6 +1287,7 @@ GameObject:
   - component: {fileID: 1543331235}
   - component: {fileID: 1543331237}
   - component: {fileID: 1543331236}
+  - component: {fileID: 1543331238}
   m_Layer: 0
   m_Name: Vertical Edge
   m_TagString: Untagged
@@ -1360,6 +1407,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1543331238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543331234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a1fd95b492e8f4d87770628f93170a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetrb: {fileID: 1373531247}
+  bounceDampaning: 2
 --- !u!1 &1855060280
 GameObject:
   m_ObjectHideFlags: 0

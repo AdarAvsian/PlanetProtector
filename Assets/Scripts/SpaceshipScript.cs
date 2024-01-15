@@ -33,7 +33,6 @@ public class SpaceshipScript : MonoBehaviour
         MoveSpaceship();
         acceleration = (spaceshiprb.velocity - lastVelocity);
         lastVelocity = spaceshiprb.velocity;
-        Debug.Log(acceleration.magnitude);
         if (acceleration.magnitude == 0 || acceleration.magnitude < 0)
         {
             spaceshiprb.AddForce(-lastVelocity * slowSpeed);
@@ -45,7 +44,6 @@ public class SpaceshipScript : MonoBehaviour
     {
         var direction = (planet.transform.position - (Vector3) spaceshiprb.position).normalized;
         planet.AddForce(direction * acceleration.magnitude, ForceMode2D.Impulse);
-        distanceJoint2D.enabled = false;
     }
 
     private void GetPlanetPosition()
@@ -84,22 +82,17 @@ public class SpaceshipScript : MonoBehaviour
         
         if (Input.GetKey(KeyCode.Space))
         {
+            distanceJoint2D.enabled = true;
             var raycast = Physics2D.Raycast(mainCamera.transform.position, planetPosition, Mathf.Infinity, layerMask);
             lineRenderer.positionCount = 2;
-            distanceJoint2D.enabled = true;
             distanceJoint2D.connectedBody = raycast.rigidbody;
-            timer += Time.deltaTime;
-            if (distanceJoint2D.distance > 1 && timer > .5)
-            {
-                distanceJoint2D.distance -= grappleSpeed;
-                timer = 0;
-            }
+            distanceJoint2D.distance -= grappleSpeed;
 
-        } else
-        {
-            distanceJoint2D.enabled = false;
+        } else {
             lineRenderer.positionCount = 0;
-            timer = 0;
+            distanceJoint2D.enabled = false;
+            print("working");
         }
+        
     }
 }
