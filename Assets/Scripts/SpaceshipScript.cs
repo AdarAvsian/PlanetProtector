@@ -9,12 +9,10 @@ public class SpaceshipScript : MonoBehaviour
     public Rigidbody2D planetrb;
     public LineRenderer lineRenderer;
     public LayerMask layerMask;
-    public int moveSpeed = 200;
-    public int grappleStrength = 10;
+    public int moveSpeed = 700;
+    public int grappleStrength = 2;
 
     private Vector2 planetPosition;
-    private Vector2 acceleration;
-    private Vector2 lastVelocity;
 
     void Start()
     {
@@ -26,18 +24,7 @@ public class SpaceshipScript : MonoBehaviour
     {
         GrapplePlanet();
         MoveSpaceship();
-        
-        acceleration = (spaceshiprb.velocity - lastVelocity);
-        lastVelocity = spaceshiprb.velocity;
     }
-
-    /*
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        var direction = (planet.transform.position - (Vector3) spaceshiprb.position).normalized;
-        planet.AddForce(direction * acceleration.magnitude, ForceMode2D.Impulse);
-    }
-    */
 
     private void MoveSpaceship()
     {
@@ -80,7 +67,6 @@ public class SpaceshipScript : MonoBehaviour
         {
             lineRenderer.positionCount = 0;
         }
-        
-        
+            
     }
 }
