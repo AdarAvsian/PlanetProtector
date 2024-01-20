@@ -164,3 +164,4 @@ MonoBehaviour:
   moveSpeed: 5
   deadZone: -12
   logic: {fileID: 0}
+  asteroidrb: {fileID: 3391385441964677440}

@@ -7,6 +7,7 @@ public class MoveAsteroidScript : MonoBehaviour
     public float moveSpeed = 5;
     public float deadZone = -12;
     public LogicScript logic;
+    public Rigidbody2D asteroidrb;
 
     void Start()
     {
@@ -28,6 +29,12 @@ public class MoveAsteroidScript : MonoBehaviour
         if (collision.collider.name == "Planet")
         {
             logic.gameOver();
+        } else if (collision.collider.name == "Spaceship")
+        {
+            float damage = (asteroidrb.velocity.magnitude * asteroidrb.mass) / 200;
+            logic.decrementHealth(damage);
+            Destroy(gameObject);
         }
     }
+
 }
