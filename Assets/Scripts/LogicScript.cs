@@ -13,6 +13,8 @@ public class LogicScript : MonoBehaviour
     public GameObject navigation;
     public Image health;
     public GameObject healthBar;
+    public Vector3 topRightCorner;
+    public Vector3 bottomLeftCorner;
 
     private int playerScore;
     public bool isAlive = true;
@@ -24,8 +26,12 @@ public class LogicScript : MonoBehaviour
     private int maxNumAsteroids;
     private float spawnRate = 5;
     private int difficulty = 1;
- 
 
+    public void Start()
+    {
+        topRightCorner = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.nearClipPlane));
+        bottomLeftCorner = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane));
+    }
     public void addScore(int scoreToAdd)
     {
         if (isAlive)
@@ -37,7 +43,6 @@ public class LogicScript : MonoBehaviour
             {
                 incrementDifficulty();
             }
-        
         }
     }
 
@@ -77,6 +82,12 @@ public class LogicScript : MonoBehaviour
             gameOver();
         }
     }
+
+    public void restoreHealth()
+    {
+        playerHealth = 100f;
+        health.fillAmount = 1;
+    }
     private void incrementDifficulty()
     {
         difficulty++;
@@ -89,7 +100,6 @@ public class LogicScript : MonoBehaviour
         maxNumAsteroids = Mathf.Min(10, difficulty * 3);
         minNumAsteroids = Mathf.Min(6, difficulty);
         spawnRate =   5 - (difficulty * .5f);
-        print(difficulty);
     }
 
     public float getSpawnRate()

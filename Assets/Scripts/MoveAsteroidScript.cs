@@ -31,7 +31,7 @@ public class MoveAsteroidScript : MonoBehaviour
             logic.gameOver();
         } else if (collision.collider.name == "Spaceship")
         {
-            float damage = (asteroidrb.velocity.magnitude * asteroidrb.mass) / 200;
+            float damage = (asteroidrb.velocity.magnitude * asteroidrb.mass) * .05f;
             logic.decrementHealth(damage);
             Destroy(gameObject);
         }

@@ -17,13 +17,11 @@ public class PlayerScript : MonoBehaviour
     {
         highScoreText.text = "High Score: " + score.ToString();
     }
-
     void updateHighScore(int newScore)
     {
         PlayerPrefs.SetInt("highScore", newScore);
         setHighScoreText(newScore);
     }
-
     void incrementTotalStars(int amount)
     {
         int current = PlayerPrefs.GetInt("totalStars");

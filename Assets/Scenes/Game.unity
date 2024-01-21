@@ -1696,7 +1696,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AsteroidPrefabs:
   - {fileID: 9132938404749347071, guid: ccd414be8f29e854d9a4b79094214b53, type: 3}
-  spawnRate: 2
   logic: {fileID: 1084421070}
 --- !u!4 &555360003
 Transform:
@@ -3299,16 +3298,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1963170139}
-  playerScore: 0
   scoreText: {fileID: 1026574051}
   highScoreText: {fileID: 804657941}
   gameOverScreen: {fileID: 1775159065}
   navigation: {fileID: 1153803727}
-  isAlive: 1
-  isRunning: 0
-  playerHealth: 100
   health: {fileID: 581381214}
   healthBar: {fileID: 1251154540}
+  topRightCorner: {x: 0, y: 0, z: 0}
+  bottomLeftCorner: {x: 0, y: 0, z: 0}
+  isAlive: 1
+  isRunning: 0
 --- !u!4 &1084421071
 Transform:
   m_ObjectHideFlags: 0
@@ -4779,6 +4778,7 @@ Transform:
   - {fileID: 1084421071}
   - {fileID: 1883583990}
   - {fileID: 14534420}
+  - {fileID: 1927593709}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1677845261
@@ -5967,6 +5967,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926015474}
   m_CullTransparentMesh: 1
+--- !u!1 &1927593708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1927593709}
+  - component: {fileID: 1927593710}
+  m_Layer: 0
+  m_Name: Medkit Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1927593709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927593708}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1672084815}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1927593710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927593708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f5e95261efeed74f9a0960124e382dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MedkitPrefab: {fileID: 7961125355940686823, guid: e6e27cbccdccc4941bcac3738dbcc6be, type: 3}
+  logic: {fileID: 1084421070}
+  spawnRate: 20
 --- !u!1 &1953728741
 GameObject:
   m_ObjectHideFlags: 0
