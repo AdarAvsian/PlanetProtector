@@ -9,9 +9,11 @@ public class PlayerScript : MonoBehaviour
     public Image soundImg;
     public Sprite soundOnSprite;
     public Sprite soundOffSprite;
+    public Text totalStarsText;
     void Start()
     {
         setHighScoreText(PlayerPrefs.GetInt("highScore"));
+        setStarsText(PlayerPrefs.GetInt("totalStars"));
     }
     private void setHighScoreText(int score)
     {
@@ -22,10 +24,16 @@ public class PlayerScript : MonoBehaviour
         PlayerPrefs.SetInt("highScore", newScore);
         setHighScoreText(newScore);
     }
-    void incrementTotalStars(int amount)
+    public void incrementTotalStars(int amount)
     {
         int current = PlayerPrefs.GetInt("totalStars");
         PlayerPrefs.SetInt("totalStars", current + amount);
+        setStarsText(current + amount);
+        print("added");
+    }
+    void setStarsText(int amount)
+    {
+        totalStarsText.text = amount.ToString();
     }
     bool canAfford(int amount)
     {

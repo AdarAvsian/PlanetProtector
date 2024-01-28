@@ -26,6 +26,7 @@ public class LogicScript : MonoBehaviour
     private int maxNumAsteroids;
     private float spawnRate = 5;
     private int difficulty = 1;
+    private int stars = 0;
 
     public void Start()
     {
@@ -57,6 +58,8 @@ public class LogicScript : MonoBehaviour
         gameOverScreen.SetActive(true);
         isAlive = false;
         difficulty = 1;
+        player.incrementTotalStars(stars);
+        stars = 0;
         if (playerScore > PlayerPrefs.GetInt("highScore"))
         {
             PlayerPrefs.SetInt("highScore", playerScore);
@@ -87,6 +90,11 @@ public class LogicScript : MonoBehaviour
     {
         playerHealth = 100f;
         health.fillAmount = 1;
+    }
+
+    public void incrementStars()
+    {
+        stars++;
     }
     private void incrementDifficulty()
     {

@@ -28,7 +28,7 @@ public class StarScript : MonoBehaviour
     {
         if (collision.name == "Spaceship")
         {
-            //add star
+            logic.incrementStars();
             Destroy(gameObject);
         }
     }

@@ -4,6 +4,7 @@ using System.Net;
 using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static UnityEngine.GraphicsBuffer;
 
 public class SpaceshipScript : MonoBehaviour
@@ -19,17 +20,19 @@ public class SpaceshipScript : MonoBehaviour
     private Vector2 planetPosition;
     private bool gameStarted = false;
 
+    [SerializeField] private InputActionReference moveActionToUse;
+    [SerializeField] private InputActionReference grappleActionToUse;
+
     void Start()
     {
         lineRenderer.positionCount = 0;
     }
 
-
     private void FixedUpdate()
     {
         GrapplePlanet();
         MoveSpaceship();
-        // RestoreRotation();
+
         if (gameStarted)
         {
             logic.startGame();
@@ -41,41 +44,24 @@ public class SpaceshipScript : MonoBehaviour
         if (!gameStarted) {
             logic.startGame();
             gameStarted = true;
-            print("started");
         }
     }
 
     private void MoveSpaceship()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
+        Vector2 moveDirection = moveActionToUse.action.ReadValue<Vector2>();
+        if (moveDirection != Vector2.zero)
         {
-            spaceshiprb.AddForce(Vector3.right * moveSpeed);
-            handleGame();
-            
-            
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            spaceshiprb.AddForce(Vector3.left * moveSpeed);
             handleGame();
         }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            spaceshiprb.AddForce(Vector3.down * moveSpeed);
-            handleGame();
-        }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            spaceshiprb.AddForce(Vector3.up * moveSpeed);
-            handleGame();
-        }
+        spaceshiprb.AddForce(moveDirection * moveSpeed);
     }
 
     private void GrapplePlanet()
     {
         planetPosition = planetrb.transform.position;
 
-        if (Input.GetKey(KeyCode.Space))
+        if (grappleActionToUse.action.IsPressed())
         {
             lineRenderer.positionCount = 2;
             lineRenderer.SetPosition(0, transform.position);
@@ -87,12 +73,5 @@ public class SpaceshipScript : MonoBehaviour
         {
             lineRenderer.positionCount = 0;
         }    
-    }
-
-    private void RestoreRotation()
-    {
-        Vector3 originalRotation = new Quaternion(0, 0, 0, 1).eulerAngles;
-        Vector3 currentRotation = planetrb.transform.rotation.eulerAngles;
-        planetrb.transform.rotation = new Quaternion(0, 0, 0, 1);
     }
 }
