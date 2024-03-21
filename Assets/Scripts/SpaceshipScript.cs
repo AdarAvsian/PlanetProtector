@@ -63,6 +63,7 @@ public class SpaceshipScript : MonoBehaviour
 
         if (grappleActionToUse.action.IsPressed())
         {
+            handleGame();
             lineRenderer.positionCount = 2;
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, planetPosition);

@@ -5,12 +5,14 @@ using UnityEngine;
 public class StarScript : MonoBehaviour
 {
     public LogicScript logic;
+    public AudioManagerScript audio;
     private float timer = 0;
     private float timeGiven = 5;
 
     private void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+        audio = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManagerScript>();
     }
     void FixedUpdate()
     {
@@ -28,6 +30,7 @@ public class StarScript : MonoBehaviour
     {
         if (collision.name == "Spaceship")
         {
+            audio.PlayGettingStar();
             logic.incrementStars();
             Destroy(gameObject);
         }

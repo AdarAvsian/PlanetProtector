@@ -7,11 +7,13 @@ public class MoveAsteroidScript : MonoBehaviour
     public float moveSpeed = 5;
     public float deadZone = -12;
     public LogicScript logic;
+    public AudioManagerScript audio;
     public Rigidbody2D asteroidrb;
 
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+        audio = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManagerScript>();
     }
     void Update()
     {
@@ -33,6 +35,7 @@ public class MoveAsteroidScript : MonoBehaviour
         {
             float damage = (asteroidrb.velocity.magnitude * asteroidrb.mass) * .05f;
             logic.decrementHealth(damage);
+            audio.PlayTakingDamage();
             Destroy(gameObject);
         }
     }

@@ -39,7 +39,7 @@
                 {
                     "name": "",
                     "id": "45aec0d5-a7b8-4d62-8198-aec7569e890d",
-                    "path": "*/{SecondaryAction}",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
